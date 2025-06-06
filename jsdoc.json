@@ -1,0 +1,12 @@
+{
+  "source": {
+    "include": ["scripts"],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "docs",
+    "recurse": true,
+    "template": "node_modules/jsdoc/templates/default"
+  }
+}
