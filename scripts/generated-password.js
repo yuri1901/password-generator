@@ -58,6 +58,17 @@ function calculateOptionsScore() {
   return totalScore;
 }
 /**
+ * Перевіряє, чи жодна з опцій для генерації пароля не вибрана.
+ *
+ * Перетворює список чекбоксів `passwordOptions` у масив і перевіряє,
+ * що всі чекбокси неактивні (не обрані).
+ *
+ * @returns {boolean} Повертає `true`, якщо жодна опція не вибрана, інакше `false`.
+ */
+function isPasswordOptionEmpty() {
+  return [...vars.passwordOptions].every((checkbox) => !checkbox.checked);
+}
+/**
  * Оновлює індикатор надійності пароля.
  * Якщо жодна опція не вибрана, очищує значення пароля і скидає індикатор.
  * Інакше обчислює сумарний бал опцій та довжини пароля,
@@ -66,11 +77,7 @@ function calculateOptionsScore() {
  * @returns {void} Функція не повертає значення.
  */
 function updateStrengthIndicator() {
-  const noneChecked = [...vars.passwordOptions].every(
-    (checkbox) => !checkbox.checked
-  );
-  if (noneChecked) {
-    vars.passwordValue.value = "";
+  if (isPasswordOptionEmpty()) {
     vars.strengthBox.setAttribute("class", "");
     vars.strengthText.textContent = "";
     return;
@@ -144,6 +151,11 @@ function generatePassword() {
     generatedPassword += selectedChars[randomNumber];
   }
 
+  if (isPasswordOptionEmpty()) {
+    vars.passwordValue.value = "";
+    return;
+  }
+
   vars.passwordValue.value = generatedPassword;
 }
 /**
@@ -163,9 +175,11 @@ function copyPassword() {
     .writeText(password)
     .then(() => {
       vars.copyMessage.setAttribute("style", "display: block");
+      vars.passwordValue.setAttribute("style", "color: darkgray");
 
       setTimeout(() => {
         vars.copyMessage.setAttribute("style", "display: none");
+        vars.passwordValue.setAttribute("style", "");
       }, 3000);
     })
     .catch((err) => {
