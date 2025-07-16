@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>generator password</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="title">
+      <h1>Password Generator</h1>
+    </header>
+    <section class="wrapper">
+      <article>
+        <label for="password">
+          <input type="text" value="P4$5W0rD!" id="password" disabled />
+        </label>
+        <div class="copied">
+          <span style="display: none">copied</span>
+          <button></button>
+        </div>
+      </article>
+
+      <article>
+        <div class="character-length">
+          <p>Character Length</p>
+          <span id="lengthValue">6</span>
+        </div>
+        <div class="change-range">
+          <label for="length">
+            <input
+              type="range"
+              name="length"
+              min="6"
+              max="20"
+              step="1"
+              value="6"
+              id="length"
+            />
+          </label>
+        </div>
+        <div class="select__settings">
+          <label for="uppercase">
+            <input type="checkbox" name="uppercase" id="uppercase" checked />
+            <span class="checkmark"></span>
+            Include Uppercase Letters
+          </label>
+          <label for="lovercase">
+            <input type="checkbox" name="lovercase" id="lovercase" />
+            <span class="checkmark"></span>
+            Include Lowercase Letters
+          </label>
+          <label for="numbers">
+            <input type="checkbox" name="numbers" id="numbers" />
+            <span class="checkmark"></span>
+            Include Numbers
+          </label>
+          <label for="symbols">
+            <input type="checkbox" name="symbols" id="symbols" />
+            <span class="checkmark"></span>
+            Include Symbols
+          </label>
+          <label for="similar">
+            <input type="checkbox" name="similar" id="similar" />
+            <span class="checkmark"></span>
+            Similar Symbols
+          </label>
+        </div>
+        <div class="strength">
+          <p>STRENGTH</p>
+          <div class="tooWeak">
+            <p>TOO-WEAK!</p>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="generate">
+          <button>GENERATE</button>
+        </div>
+      </article>
+    </section>
+
+    <script type="module" src="./scripts/generated-password.js"></script>
+  </body>
+</html>

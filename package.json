@@ -1,0 +1,23 @@
+{
+  "name": "password-generator",
+  "version": "1.0.0",
+  "description": "Це простий генератор паролів, створений за допомогою HTML, SCSS і Vanilla JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuri1901/password-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuri1901/password-generator/issues"
+  },
+  "homepage": "https://github.com/yuri1901/password-generator#readme",
+  "devDependencies": {
+    "jsdoc": "^4.0.4"
+  }
+}

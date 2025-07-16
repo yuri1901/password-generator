@@ -1,0 +1,10 @@
+@mixin desktopHover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+@mixin mobileScreen {
+  @media screen and (max-width: $mobile) and (hover: none) {
+    @content;
+  }
+}

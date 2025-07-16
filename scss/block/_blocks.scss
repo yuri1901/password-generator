@@ -1,0 +1,386 @@
+.wrapper {
+  max-width: 540px;
+  max-height: 673px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+article {
+  background-color: $dark-gray;
+  width: 100%;
+
+  display: flex;
+  padding: 20px 30px;
+
+  @include mobileScreen {
+    padding: 17px;
+    padding: 11px;
+  }
+}
+
+article:first-of-type {
+  margin-top: 5px;
+
+  justify-content: space-between;
+  align-items: center;
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    @include mobileScreen {
+      gap: 6px;
+    }
+    & span {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+      color: $light-green;
+      @include mobileScreen {
+        font-size: 14px;
+      }
+    }
+  }
+  & button {
+    width: 24px;
+    height: 24px;
+    background-image: url(./../assets/images/icon-copy.svg);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    @include desktopHover {
+      &:hover {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+          saturate(0%) hue-rotate(153deg) brightness(102%) contrast(102%);
+      }
+    }
+    @include mobileScreen {
+      &:active {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+          saturate(0%) hue-rotate(153deg) brightness(102%) contrast(102%);
+      }
+      width: 17px;
+      height: 20px;
+      background-size: 17px 20px;
+    }
+  }
+
+  & input {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: $gray-input;
+
+    @include mobileScreen {
+      font-size: 20px;
+    }
+  }
+}
+
+article:last-of-type {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.character-length {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & p {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: $light-gray;
+  }
+  & span {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    color: $light-green;
+  }
+}
+.length {
+  background-color: red !important;
+}
+.select__settings {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & label {
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: $light-gray;
+
+    @include desktopHover {
+      &:hover .checkmark {
+        border-color: $light-green;
+      }
+    }
+    @include mobileScreen {
+      font-size: 16px;
+
+      &:active .checkmark {
+        border-color: $light-green;
+      }
+    }
+  }
+  & input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: none;
+    border: 2px solid #e6e5ea;
+    position: relative; /* для псевдоелемента галочки */
+    transition:
+      background-color 0.3s,
+      box-shadow 0.3s;
+  }
+  input[type="checkbox"]:checked + .checkmark {
+    background-color: $light-green;
+    border-color: $light-green;
+    background-image: url(./../assets/images/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.strength {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  min-height: 72px;
+  padding: 20px 32px;
+  background-color: $dark-blue;
+  @include mobileScreen {
+    padding: 14px 16px;
+  }
+  & > p {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: $gray;
+    @include mobileScreen {
+      font-size: 16px;
+    }
+  }
+
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    p {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      color: $light-gray;
+      margin-right: 8px;
+      @include mobileScreen {
+        font-size: 16px;
+      }
+    }
+    span {
+      display: block;
+      width: 10px;
+      height: 28px;
+      border: 2px solid white;
+    }
+  }
+}
+
+.generate {
+  margin-top: 12px;
+  & button {
+    width: 100%;
+    height: 65px;
+    background-color: $light-green;
+
+    font-size: 18px;
+    line-height: 24px;
+    color: #24232c;
+    border: 2px solid $light-green;
+    transition:
+      background-color 0.5s ease,
+      color 0.5s ease;
+
+    position: relative;
+
+    @include mobileScreen {
+      font-weight: 700;
+      height: 50px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: calc(60% + 24px);
+      transform: translate(-50%, -50%);
+      background-image: url("./../assets/images/icon-arrow-right.svg");
+      width: 12px;
+      height: 12px;
+      @include mobileScreen {
+        left: calc(66% + 16px);
+      }
+    }
+    @include desktopHover {
+      &:hover {
+        background-color: $dark-gray;
+        color: $light-green;
+        &::before {
+          background-image: url("./../assets/images/icon-arrow-right-hover.svg");
+        }
+      }
+    }
+    @include mobileScreen {
+      &:active {
+        background-color: $dark-gray;
+        color: $light-green;
+        &::before {
+          background-image: url("./../assets/images/icon-arrow-right-hover.svg");
+        }
+      }
+    }
+  }
+}
+
+input[type="range"] {
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+input[type="range"] {
+  color: $light-green;
+  --thumb-height: 24px;
+  --track-height: 8px;
+  --track-color: rgba(0, 0, 0, 0.2);
+  --clip-edges: 0.125em;
+}
+
+input[type="range"] {
+  position: relative;
+  background: #fff0;
+  overflow: hidden;
+}
+
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  transition: all ease 100ms;
+  height: var(--thumb-height);
+}
+
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+  position: relative;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+  --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+  --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+  --clip-further: calc(100% + 1px);
+  --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+    100vmax currentColor;
+
+  width: var(--thumb-width, var(--thumb-height));
+  background: linear-gradient(тщту 0 0) scroll no-repeat left center / 0%
+    calc(var(--track-height) + 1px);
+  // background-color: currentColor;
+  //!
+  background-color: $light-gray;
+  cursor: pointer;
+  @include desktopHover {
+    &:hover {
+      background-color: $dark-blue;
+      border: 2px solid $light-green;
+    }
+  }
+  @include mobileScreen {
+    &:active {
+      background-color: $dark-blue;
+      border: 2px solid $light-green;
+    }
+  }
+  //
+  box-shadow: var(--box-fill);
+  border-radius: var(--thumb-width, var(--thumb-height));
+
+  filter: brightness(100%);
+  clip-path: polygon(
+    100% -1px,
+    var(--clip-edges) -1px,
+    0 var(--clip-top),
+    -100vmax var(--clip-top),
+    -100vmax var(--clip-bottom),
+    0 var(--clip-bottom),
+    var(--clip-edges) 100%,
+    var(--clip-further) var(--clip-further)
+  );
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  filter: brightness(var(--brightness-down));
+  cursor: grabbing;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
+    100% calc(var(--track-height) + 1px);
+}
+
+input[type="range"]:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+/* === Firefox specific styles === */
+input[type="range"],
+input[type="range"]::-moz-range-track,
+input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  transition: all ease 100ms;
+  height: var(--thumb-height);
+}
+
+input[type="range"]::-moz-range-track,
+input[type="range"]::-moz-range-thumb,
+input[type="range"]::-moz-range-progress {
+  background: #fff0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: currentColor;
+  border: 0;
+  width: var(--thumb-width, var(--thumb-height));
+  border-radius: var(--thumb-width, var(--thumb-height));
+  cursor: grab;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  background: var(--track-color);
+}
+
+input[type="range"]:disabled::-moz-range-thumb {
+  cursor: not-allowed;
+}
